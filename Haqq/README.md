@@ -123,6 +123,7 @@ sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bs
 
 Установите Go 1.18.3
 ```bash
+cd $HOME && \
 ver="1.18.3" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
 sudo rm -rf /usr/local/go && \
