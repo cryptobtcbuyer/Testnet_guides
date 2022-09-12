@@ -1,23 +1,24 @@
-# Haqq Testnet
-
 <div align="center">
   <h1> Haqq Testnet </h1>
 </div>
 
 
 
-
-
-Официальный гайд: [Validators Contest](https://github.com/haqq-network/validators-contest)  
-Medium: [Validators Contest](https://github.com/haqq-network/validators-contest)  
-Эксплорер: [testnet.manticore.team/haqq](https://testnet.manticore.team/haqq)
+Сайт — [islamiccoin.net](https://islamiccoin.net/)  
+Medium — [Islamic Coin](https://medium.com/islamic-coin)  
+Twitter — [@Islamic_Coin](https://twitter.com/islamic_coin)  
+Github — [haqq-network](https://github.com/haqq-network)  
+Официальный гайд — [Validators Contest](https://github.com/haqq-network/validators-contest)  
+Эксплорер — [testnet.manticore.team/haqq](https://testnet.manticore.team/haqq)  
  
  #
+ <br> 
 
 - [Установка на сервере, где создавали gentx ↓](#part1)  
 - [Установка на другом сервере ↓](#part2)  
+- [Полезные команды ↓](#part3)  
 
-#
+<br> 
 
 
 <a name="part1"></a> 
@@ -204,6 +205,13 @@ sudo systemctl restart haqqd && \
 sudo journalctl -u haqqd -f -o cat
 ```
 
-<br> 
+
  
   
+ 
+<br> 
+
+<a name="part3"></a> 
+ 
+## Полезные команды
+<br> 
