@@ -16,7 +16,9 @@ Github — [haqq-network](https://github.com/haqq-network)
 
 - [Установка на сервере, где создавали gentx ↓](#part1)  
 - [Установка на другом сервере ↓](#part2)  
-- [Полезные команды ↓](#part3)  
+- [Создание валидатора ↓](#part3)  
+- [State Sync ↓](#part4)  
+- [Полезные команды ↓](#part5)  
 
 <br> 
 
@@ -101,9 +103,9 @@ sudo systemctl restart haqqd && \
 sudo journalctl -u haqqd -f -o cat
 ```
 
+
 <br> 
  
-
 
 <a name="part2"></a> 
  
@@ -218,14 +220,57 @@ sudo systemctl enable haqqd && \
 sudo systemctl restart haqqd && \
 sudo journalctl -u haqqd -f -o cat
 ```
-
-
  
+ 
+<br> 
+<a name="part4"></a> 
+ 
+## Создание валидатора
+<br>  
+
+  
+Дождитесь полной синхронизации ноды.
+```bash
+curl -s localhost:26657/status
+
+# Нода синхронизирована, если в строчке "catching_up" значение false
+```
+
+Чтобы создать валидатора нам нужно получить токены из крана.
+
+Дляя этого экспортируем *private_key* нашего кошелька
+```bash
+haqqd keys export <YOURWALLET> --unarmored-hex --unsafe
+```
+Импортируем кошелек в Metamask:
+1. Открываем Metamask  
+1. `Меню` ——> `Импортировать счет`  
+1.  Выбираем тип «Закрытый ключ» и вставляем в поле *private_key* из предыдущей команды.
+1.  Нажимаем «Импорт»
+
+Переходим на сайт крана https://testedge2.haqq.network/  
+Подключаем кошелек, добавляем предложенную сеть, логинимся черех гитхаб и запрашиваем 1 токен.
+
+Проверяем, что мы все сделали правильно и токен пришел на кошелек
+```bash
+haqqd q bank balances <YOURWALLETADDRESS>
+# Должно быть так amount: "1000000000000000000"
+```
+
+
+
   
  
 <br> 
+<a name="part4"></a> 
+ 
+## State Sync
+<br>  
 
-<a name="part3"></a> 
+
+<br> 
+
+<a name="part5"></a> 
  
 ## Полезные команды
 <br> 
