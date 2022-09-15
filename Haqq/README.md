@@ -261,9 +261,9 @@ haqqd tx staking create-validator \
 --amount 900000000000000000aISLM \
 --pubkey $(haqqd tendermint show-validator) \
 --chain-id haqq_54211-2 \
---commission-rate="0.10" \
+--commission-rate="0.05" \
 --commission-max-rate="0.20" \
---commission-max-change-rate="0.01" \
+--commission-max-change-rate="0.10" \
 --min-self-delegation="1000000" \
 --gas=auto \
 --fees 250aISLM \
