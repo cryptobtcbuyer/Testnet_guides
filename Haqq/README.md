@@ -111,7 +111,6 @@ sudo journalctl -u haqqd -f -o cat
  
 ## Если вы устанавливаете ноду на другом сервере
 <br> 
-
 > ⚠️   
 > Если вы хотите перейти на другой сервер — убедитесь, что вы сохранили `mnemonic` и `priv_validator_key.json` с сервера, где вы делали gentx.
 > Без мнемоники вы не сможете востановить свой кошелек, а без `priv_validator_key.json` запустить валидатора.
@@ -223,7 +222,7 @@ sudo journalctl -u haqqd -f -o cat
  
  
 <br> 
-<a name="part4"></a> 
+<a name="part3"></a> 
  
 ## Создание валидатора
 <br>  
@@ -232,13 +231,12 @@ sudo journalctl -u haqqd -f -o cat
 Дождитесь полной синхронизации ноды.
 ```bash
 curl -s localhost:26657/status
-
 # Нода синхронизирована, если в строчке "catching_up" значение false
 ```
 
 Чтобы создать валидатора нам нужно получить токены из крана.
 
-Дляя этого экспортируем *private_key* нашего кошелька
+Для этого экспортируем *private_key* нашего кошелька
 ```bash
 haqqd keys export <YOURWALLET> --unarmored-hex --unsafe
 ```
@@ -254,8 +252,33 @@ haqqd keys export <YOURWALLET> --unarmored-hex --unsafe
 Проверяем, что мы все сделали правильно и токен пришел на кошелек
 ```bash
 haqqd q bank balances <YOURWALLETADDRESS>
-# Должно быть так amount: "1000000000000000000"
+# amount: "1000000000000000000"
 ```
+
+Создаем валидатора
+```bash
+haqqd tx staking create-validator \
+--amount 1000000000000000000aISLM \
+--pubkey $(haqqd tendermint show-validator) \
+--chain-id haqq_54211-2 \
+--commission-rate 0.05 \
+--commission-max-rate 0.2 \
+--commission-max-change-rate 0.1 \
+--min-self-delegation "1000000" \
+--moniker "<YOURMONIKER>" \
+--from <YOURWALLET>
+```
+
+> ⚠️   
+> Обязательно делаем резервную копию `priv_validator_key.json` 
+<br> 
+ 
+ 
+Находим своего валидатора в эксплорере  
+https://testnet.manticore.team/haqq/staking
+
+>Если валидатор не создался, проверьте в эксплорере txhash транзакции, там будет описана ошибка 
+
 
 
 
