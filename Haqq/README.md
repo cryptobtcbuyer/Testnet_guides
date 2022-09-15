@@ -258,17 +258,17 @@ haqqd q bank balances <YOURWALLETADDRESS>
 Создаем валидатора
 ```bash
 haqqd tx staking create-validator \
---amount=900000000000000000aISLM \
---pubkey=$(haqqd tendermint show-validator) \
---chain-id=haqq_54211-2 \
---commission-rate="0.05" \
---commission-max-rate="0.20" \
---commission-max-change-rate="0.10" \
---min-self-delegation="1000000" \
+--chain-id haqq_54211-2 \
+--amount 1000000000000000000aISLM \
+--pubkey $(haqqd tendermint show-validator) \
+--commission-rate 0.05 \
+--commission-max-rate 0.2 \
+--commission-max-change-rate 0.1 \
+--min-self-delegation "1000000" \
+--moniker "<YOURMONIKER>" \
+--from <YOURWALLET> \
 --gas=auto \
---fees=250aISLM \
---moniker="<YOURMONIKER>" \
---from=<YOURWALLET>
+--fees 500aISLM
 ```
 
 > ⚠️   
