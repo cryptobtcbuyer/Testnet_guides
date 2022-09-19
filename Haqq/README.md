@@ -324,7 +324,7 @@ peers="23ff658b56fbb8bc73372973a34733ff5d79b435@142.132.202.50:11604" \
 ```
 Подгружаем addrbook
 ```bash
-rm $HOME/.haqqd/config/addrbook.json && wget -O $HOME/.haqqd/config/addrbook.json "https://raw.githubusercontent.com/cryptobtcbuyer/Testnet_guides/main/Haqq/addrbook.json"
+wget -O $HOME/.haqqd/config/addrbook.json "https://raw.githubusercontent.com/cryptobtcbuyer/Testnet_guides/main/Haqq/addrbook.json"
 ```
 Добавлем значние переменных в config.toml
 ```bash
