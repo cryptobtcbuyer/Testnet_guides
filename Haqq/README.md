@@ -294,7 +294,10 @@ https://testnet.manticore.team/haqq/staking
 <br> 
 <a name="part4"></a> 
  
-## State Sync
+## State Sync (опционально)
+<br>  
+
+>State Sync позволяет не синхронизировать всю базу блокчейна и быстро синхронизировать ноду.  
 <br>  
 
 Останавливаем ноду и очищаем базу данных
@@ -304,7 +307,7 @@ sudo systemctl stop haqqd && haqqd tendermint unsafe-reset-all --home $HOME/.haq
 Устанавливаем переменные
 ```bash
 SNAP_RPC="http://142.132.202.50:11601"  
-# всегда провейте изначально, что стейтсинк доступен. Адрес в кавычках должен открываться в браузере.
+# всегда проверяйте, что стейтсинк доступен. Адрес в кавычках должен открываться в браузере.
   
 # Вводим одной командой:
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
@@ -314,7 +317,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 Проверяем
 ```bash
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
-# должно быть что-то похожее(цифры будут другие) на:
+# должно быть что-то похожее(цифры будут другие):
 # 376080 374080 F0C78FD4AE4DB5E76A298206AE3C602FF30668C521D753BB7C435771AEA47189
 ```
 Добавлем пир
