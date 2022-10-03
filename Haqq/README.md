@@ -35,19 +35,19 @@ Github — [haqq-network](https://github.com/haqq-network)
 > Там находится `priv_validator_key.json`, без которого вы не сможете продолжить участие в тестнете, в случае его потери. 
 <br> 
  
-Обновите бинарный файл haqqd до версии 1.0.3.
+Обновите бинарный файл haqqd до версии 1.1.0.
 ```bash
 cd $HOME/haqq && \
 git fetch && \
-git checkout v1.0.3 && \
+git checkout v1.1.0 && \
 make install
 ```
   
 Убедитесь, что версия и commit правильные:
 ```bash
 haqqd version --long | head
-# version: '"1.0.3"'
-# commit: 58215364d5be4c9ab2b17b2a80cf89f10f6de38a
+# version: '"1.1.0"'
+# commit: 76f2e42c15edcb844fb7129ef2b57df1294253c9
 ```
   
 Удалите старый genesis и загрузите genesis.json на свой сервер в папку .haqqd
@@ -145,15 +145,15 @@ go version
 ```bash
 cd $HOME && git clone https://github.com/haqq-network/haqq && \
 cd haqq && \
-git checkout v1.0.3 && \
+git checkout v1.1.0 && \
 make install 
 ```
   
 Убедитесь, что версия и commit правильные:
 ```bash
 haqqd version --long | head
-# version: '"1.0.3"'
-# commit: 58215364d5be4c9ab2b17b2a80cf89f10f6de38a
+# version: '"1.1.0"'
+# commit: 76f2e42c15edcb844fb7129ef2b57df1294253c9
 ```
 
 Инициализируйте ноду
