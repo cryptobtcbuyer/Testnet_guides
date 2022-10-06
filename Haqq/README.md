@@ -18,8 +18,9 @@ Github — [haqq-network](https://github.com/haqq-network)
 - [Установка на другом сервере ↓](#part2)  
 - [Создание валидатора ↓](#part3)  
 - [State Sync ↓](#part4)  
-- [Задания ↓](#part5)  
-- [Полезные команды ↓](#part6)  
+- [SnapShot ↓](#part5)  
+- [Задания ↓](#part6)  
+
 
 <br> 
 
@@ -348,9 +349,53 @@ sudo systemctl restart haqqd &&  sudo journalctl -u haqqd -f -o cat
 
 <a name="part5"></a> 
  
-## Задания 
+## SnapShot 
+06.10.22 (15.4 GB) block height 376000
 
-*Скоро*
+Удаляем каталог с базой данных и создаем пустой каталог
+```bash
+sudo systemctl stop haqqd
+rm -rf $HOME/.haqqd/data/
+mkdir $HOME/.haqqd/data/
+```
+Скачиваем архив
+```bash
+cd $HOME
+wget http://142.132.202.50:8000/haqqdata.tar.gz
+```
+Распаковываем архив
+```bash
+tar -C $HOME/.haqqd/data/ -zxvf haqqdata.tar.gz --strip-components 1
+```
+⚠️ Важно! Если валидатор у вас уже создан, необходимо сбросить priv_validator_state.json 
+```bash
+wget -O $HOME/.haqqd/data/priv_validator_state.json "https://raw.githubusercontent.com/obajay/StateSync-snapshots/main/Canto/priv_validator_state.json"
+```
+Проверяем, что состояние валидатора на начальном этапе
+```bash
+cd && cat .haqqd/data/priv_validator_state.json
+#{
+#  "height": "0",
+#  "round": 0,
+#  "step": 0
+#}
+```
+Устанавливаем значение прунинга "nothing"
+```bash
+sed -i -e "s/^pruning *=.*/pruning = \"nothing\"/" $HOME/.haqqd/config/app.toml 
+```
+
+Удаляем архив, чтобы не занимал место
+```bash
+cd $HOME
+rm haqqddata.tar.gz
+```
+Рестартим ноду и смотрим логи
+```bash
+systemctl restart haqqd && journalctl -u haqqd -f -o cat
+```
+
+
 
 <br> 
 
@@ -359,5 +404,5 @@ sudo systemctl restart haqqd &&  sudo journalctl -u haqqd -f -o cat
 
 <a name="part6"></a> 
  
-## Полезные команды
+## Задания 
 <br> 
