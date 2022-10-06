@@ -369,16 +369,16 @@ tar -C $HOME/.haqqd/data/ -zxvf haqqdata.tar.gz --strip-components 1
 ```
 ⚠️ Важно! Если валидатор у вас уже создан, необходимо сбросить priv_validator_state.json 
 ```bash
-wget -O $HOME/.haqqd/data/priv_validator_state.json "https://raw.githubusercontent.com/obajay/StateSync-snapshots/main/Canto/priv_validator_state.json"
+wget -O $HOME/.haqqd/data/priv_validator_state.json "https://raw.githubusercontent.com/cryptobtcbuyer/Testnet_guides/main/Haqq/priv_validator_state.json"
 ```
 Проверяем, что состояние валидатора на начальном этапе
 ```bash
 cd && cat .haqqd/data/priv_validator_state.json
-#{
+# {
 #  "height": "0",
 #  "round": 0,
 #  "step": 0
-#}
+# }
 ```
 Устанавливаем значение прунинга "nothing"
 ```bash
@@ -392,7 +392,7 @@ rm haqqddata.tar.gz
 ```
 Рестартим ноду и смотрим логи
 ```bash
-systemctl restart haqqd && journalctl -u haqqd -f -o cat
+sudo systemctl restart haqqd && sudo journalctl -u haqqd -f -o cat
 ```
 
 
