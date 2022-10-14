@@ -295,7 +295,8 @@ https://testnet.manticore.team/haqq/staking
 <br> 
 <a name="part4"></a> 
  
-## State Sync (опционально)
+## State Sync 
+(опционально)
 <br>  
 
 >State Sync позволяет не синхронизировать всю базу блокчейна и быстро синхронизировать ноду.  
