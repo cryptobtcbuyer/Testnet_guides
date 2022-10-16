@@ -19,7 +19,7 @@ Github — [haqq-network](https://github.com/haqq-network)
 - [Создание валидатора ↓](#part3)  
 - [State Sync ↓](#part4)  
 - [SnapShot ↓](#part5)  
-- [Задания ↓](#part6)  
+
 
 
 <br> 
@@ -405,5 +405,3 @@ sudo systemctl restart haqqd && sudo journalctl -u haqqd -f -o cat
 
 <a name="part6"></a> 
  
-## Задания 
-<br> 
