@@ -36,19 +36,19 @@ Github — [haqq-network](https://github.com/haqq-network)
 > Там находится `priv_validator_key.json`, без которого вы не сможете продолжить участие в тестнете, в случае его потери. 
 <br> 
  
-Обновите бинарный файл haqqd до версии 1.2.0.
+Обновите бинарный файл haqqd до версии v1.3.0
 ```bash
 cd $HOME/haqq && \
 git fetch && \
-git checkout v1.2.0 && \
+git checkout v1.3.0 && \
 make install
 ```
   
 Убедитесь, что версия и commit правильные:
 ```bash
 haqqd version --long | head
-# version: '"1.2.0"'
-# commit: 40935b70fb1da4ee28f1d91e8601060e533f6fd0
+# version: '"v1.3.0"'
+# commit: 39b4dcb706e72c187fc23ec6dddcfed20c79bc9d
 ```
   
 Удалите старый genesis и загрузите genesis.json на свой сервер в папку .haqqd
@@ -59,7 +59,7 @@ rm -rf $HOME/.haqqd/config/genesis.json && cd $HOME/.haqqd/config/ && wget https
 Проверьте genesis.json
 ```bash
 sha256sum $HOME/.haqqd/config/genesis.json
-# 8c79dda3c8f0b2b9c0f5e770136fd6044ea1a062c9272d17665cb31464a371f7
+# b93f2650bdf560cab2cf7706ecee72bfba6d947fa57f8b1b8cb887f8b428233f
 ```
 
 Добавьте сиды и пиры
@@ -146,23 +146,23 @@ go version
 ```bash
 cd $HOME && git clone https://github.com/haqq-network/haqq && \
 cd haqq && \
-git checkout v1.2.0 && \
+git checkout v1.3.0 && \
 make install 
 ```
   
 Убедитесь, что версия и commit правильные:
 ```bash
 haqqd version --long | head
-# version: '"1.2.0"'
-# commit: 40935b70fb1da4ee28f1d91e8601060e533f6fd0
+# version: '"v1.3.0"'
+# commit: 39b4dcb706e72c187fc23ec6dddcfed20c79bc9d
 ```
 
 Инициализируйте ноду
 > Данные в <> меняйте на свои значение и убирайте сами <>
 
 ```bash
-haqqd init <YOURMONIKER> --chain-id haqq_54211-2 && \
-haqqd config chain-id haqq_54211-2
+haqqd init <YOURMONIKER> --chain-id haqq_54211-3 && \
+haqqd config chain-id haqq_54211-3
 ```
 
 Восстановите свой кошелек
@@ -175,9 +175,9 @@ haqqd keys add <YOURWALLET> --recover
 
 Удалите старый genesis и загрузите genesis.json в папку .haqqd
 ```bash
-rm -rf $HOME/.haqqd/config/genesis.json && cd $HOME/.haqqd/config/ && wget https://raw.githubusercontent.com/haqq-network/validators-contest/master/genesis.json
+rm -rf $HOME/.haqqd/config/genesis.json && cd $HOME/.haqqd/config/ && wget https://github.com/haqq-network/validators-contest/raw/master/genesis.json
 ```
-  
+ 
 Проверьте genesis.json
 ```bash
 sha256sum $HOME/.haqqd/config/genesis.json
