@@ -264,7 +264,7 @@ haqqd q bank balances <YOURWALLETADDRESS>
 Создаем валидатора
 ```bash
 haqqd tx staking create-validator \
---chain-id haqq_54211-2 \
+--chain-id haqq_54211-3 \
 --amount 1000000000000000000aISLM \
 --pubkey $(haqqd tendermint show-validator) \
 --commission-rate 0.05 \
