@@ -87,13 +87,26 @@ echo -e "\033[0;32mhttp://$(wget -qO- eth0.me):8888/\033[0m"
 ### Great! Everything works!
 
 
+<br> 
 
 <a name="part3"></a> 
  
 ## Setting up alerts in Discord 
 <br> 
+Tenderduty can send notifications about missed blocks to discord.  
 
+To do this, you need to create a new server.  
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/create_discord_tenderduty.png'>
 
+Open the server menu and go to settings.  
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/settings_discord_tenderduty.png'>
+
+Open the Integration section and go to the webhooks.  
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/webhooks_discord_tenderduty.png'>
+
+Create a webhook, copy the URL and paste it into the config.  
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/copy_webhooks_discord_tenderduty.png'>
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/paste_webhooks_discord_tenderduty.png.png'>
 
 Restart the container and check logs
 ```bash
@@ -101,10 +114,8 @@ docker restart tenderduty
 
 docker logs -f --tail 20 tenderduty
 ```
-<!--
-<img src='https://thumbs.dreamstime.com/discord_alerts.png'>
--->
-
+You will receive alerts if the node starts skipping blocks or the RPC server crashes  
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/discord_tenderduty.png'>
 
 
 
