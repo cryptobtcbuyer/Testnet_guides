@@ -46,7 +46,7 @@ docker run --rm ghcr.io/blockpane/tenderduty:latest -example-config >config.yml
 
 Download the config optimized for OKP4 and add the necessary values
 ```bash
-wget -O $HOME/tenderduty/config.yml "https://raw.githubusercontent.com/cryptobtcbuyer/config.yml"
+wget -O $HOME/tenderduty/config.yml "https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/config.yml"
 
 nano $HOME/tenderduty/config.yml
 ```
