@@ -1,9 +1,9 @@
-<!--
-<img src='https://thumbs.dreamstime.com/z/%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D0%B2%D0%B5%D0%B1-%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82-%D0%B3%D0%BE%D1%80%D0%B8%D0%B7%D0%BE%D0%BD%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%B1%D0%B0%D0%BD%D0%BD%D0%B5%D1%80-%D1%81%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-231884478.jpg'>
--->
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/monitoring_img.png'>
+
 
 <div align="center">
-  <h1>TenderDuty — monitoring and alerting tool</h1>
+  <a href="https://github.com/cryptobtcbuyer/Testnet_guides/tree/main/OKP4">🠔 Back</a>
+    <h1>TenderDuty — monitoring and alerting tool</h1>
 </div>
 <br> 
 
@@ -80,7 +80,7 @@ Open monitoring dashboard in the browser
 ```bash
 # find out your address and paste it into the browser
 echo -e "\033[0;32mhttp://$(wget -qO- eth0.me):8888/\033[0m"
-# http://108.108.108.108:8888/
+# http://120.120.120.120:8888/
 ```
 <img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/dashboard_tenderduty.png'>
 
@@ -89,19 +89,55 @@ echo -e "\033[0;32mhttp://$(wget -qO- eth0.me):8888/\033[0m"
 
 <br> 
 
+<a name="part2"></a> 
+ 
+## Setting up alerts in Telegram 
+<br> 
+Tenderduty can send notifications about missed blocks to Telegram Group.  <br> 
+
+The first thing we need to do is create our own bot. Launch the[@botfather](https://t.me/BotFather). Enter the ```/newbot``` command and follow the prompts.
+You will create a bot and get an api key that you need to keep in a safe place and not show to anyone.
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/create_bot_tg.png'>  
+
+Create a group and invite the bot you just created to join it.
+And to allow the bot to post messages you need to make it an admin.To do this, open the group menu and select the ```Manage group``` section and then ```Administrators```.  
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/admin_bot_tg.png'>  
+
+You need to link the bot and the channel to your Tenderduty configuration. To do so, you need to retrieve the channel ID from your newly created group. 
+
+Launch the bot [@username_to_id_bot](https://t.me/username_to_id_bot) and send him an invitation to your group. 
+To get a link to the group, go back to the menu ``Manage group``  and select the section ``Invite links``  
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/invite_tg.png'>  
+
+After you send the link, the bot will send you the ID of your group  
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/id_group_tg.png'>  
+
+Add the group id and api key that you received from the @botfather to the config
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/config_tg.png'>  
+
+Restart the container and check logs
+```bash
+docker restart tenderduty
+
+docker logs -f --tail 20 tenderduty
+```
+You will receive alerts if the node starts skipping blocks or the RPC server crashes  
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/tg_tenderduty.png'>  
+
+
+
+<br> 
+
 <a name="part3"></a> 
  
 ## Setting up alerts in Discord 
 <br> 
-Tenderduty can send notifications about missed blocks to discord.  
-
-To do this, you need to create a new server.  
+Tenderduty can send notifications about missed blocks to Discord.  
+ 
+To do this, you need to create a new server and new channel.  
 <img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/create_discord_tenderduty.png'>
 
-Open the server menu and go to settings.  
-<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/settings_discord_tenderduty.png'>
-
-Open the Integration section and go to the webhooks.  
+Open the server menu and select Integration section and go to the webhooks.  
 <img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/webhooks_discord_tenderduty.png'>
 
 Create a webhook, copy the URL and paste it into the config.  
