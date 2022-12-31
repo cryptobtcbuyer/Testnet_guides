@@ -55,10 +55,9 @@ You need to insert your valoper address
 ```#valoper_address: okp4valoper...```
 
 
-For more reliability, you can add more RPC
-<!--
-<img src='https://thumbs.dreamstime.com/z78.jpg'>
--->
+For more reliability, you can add more RPC  
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/config_tenderduty.png'>
+
 
 Then to exit hit the following keys:
  1. To exit your config.yml file: <kbd>CTRL</kbd> + <kbd>X</kbd>
@@ -69,26 +68,23 @@ Then to exit hit the following keys:
 Run the container after editing the config
 ```bash
 docker run -d --name tenderduty -p "8888:8888" -p "28686:28686" --restart unless-stopped -v $(pwd)/config.yml:/var/lib/tenderduty/config.yml ghcr.io/blockpane/tenderduty:latest
+```
 
-# check logs
+Check logs
+```bash
 docker logs -f --tail 20 tenderduty
 ```
-<!--
-<img src='https://thumbs.dreamstime.com/logs.png'>
--->
-
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/run_tenderduty2.png'>
 
 Open monitoring dashboard in the browser
-
 ```bash
 # find out your address and paste it into the browser
 echo -e "\033[0;32mhttp://$(wget -qO- eth0.me):8888/\033[0m"
 # http://108.108.108.108:8888/
 ```
-<!--
-<img src='https://thumbs.dreamstime.com/dahboard.png'>
--->
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/dashboard_tenderduty.png'>
 
+### Great! Everything works!
 
 
 
