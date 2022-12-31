@@ -1,4 +1,4 @@
-<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/monitoring_img.png'>
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/monitoring_img2.png'>
 
 
 <div align="center">
