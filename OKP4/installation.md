@@ -13,6 +13,7 @@ The official installation guide can be found at the [link](https://docs.okp4.net
         
 - [Installation ↓](#part1)  
 - [State Sync ↓](#part2)  
+- [Snapshot ↓](#part2)  
 
 <br>   
   
@@ -158,7 +159,7 @@ sudo systemctl stop okp4d  && okp4d tendermint unsafe-reset-all --home $HOME/.ok
 ```
 Setting variables
 ```bash
-SNAP_RPC="http://65.109.49.163:11203"  
+SNAP_RPC="http://142.132.202.50:11111"  
 # always check that the statesink is available. The address in quotes should open in the browser.
   
 # Enter with one command:
@@ -174,7 +175,7 @@ echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 ```
 Adding a peer
 ```bash
-peers="034c2fbca12a8ced548d3225bcd21bdf1216a1b3@65.109.49.163:11203" \
+peers="5c5bf00059349042504c1e7d0449c4ac6ee37fc2@142.132.202.50:11114" \
 && sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.okp4d/config/config.toml
 ```
 Adding a addrbook
