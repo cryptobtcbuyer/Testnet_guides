@@ -13,7 +13,7 @@ The official installation guide can be found at the [link](https://docs.okp4.net
         
 - [Installation ↓](#part1)  
 - [State Sync ↓](#part2)  
-- [Snapshot ↓](#part2)  
+- [Snapshot ↓](#part3)  
 
 <br>   
   
@@ -194,6 +194,50 @@ s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.okp4d/config/config.toml
 Restart the node and check the logs
 ```bash
 sudo systemctl restart okp4d  &&  sudo journalctl -u okp4d  -f -o cat
+```
+
+<br> 
+
+
+
+
+<a name="part3"></a> 
+ 
+## SnapShot 
+26.01.23 (1.7 GB) block height 633900
+
+
+Download the snapshot
+```bash
+cd $HOME
+wget http://142.132.202.50:8000/okp4_snap_633900.tar.gz
+```
+
+Stop the node, make a backup of priv_validator_state and delete the database
+```bash
+sudo systemctl stop okp4d  && \
+cp $HOME/.okp4d/data/priv_validator_state.json $HOME/priv_validator_state.json.backup  && \
+rm -rf $HOME/.okp4d/data/
+```
+
+Unpack the snapshot
+```bash
+tar -C $HOME/.okp4d/ -zxvf okp4_snap_633900.tar.gz --strip-components 3
+```
+
+Move the backup back
+```
+mv $HOME/priv_validator_state.json.backup $HOME/.okp4d/data/priv_validator_state.json
+```
+
+Restart the node and check the logs
+```bash
+sudo systemctl restart okp4d && journalctl -fu okp4d -o cat
+```
+
+Remove downloaded snapshot to free up space
+```bash
+cd $HOME && rm -rf okp4_snap_633900.tar.gz
 ```
 
 <br> 
