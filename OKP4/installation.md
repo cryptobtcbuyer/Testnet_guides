@@ -11,13 +11,13 @@ The official installation guide can be found at the [link](https://docs.okp4.net
 
 <br> 
         
-- [Installation ↓](#part1)  
-- [State Sync ↓](#part2)  
-- [Snapshot ↓](#part3)  
+- [Installation ↓](#installation)  
+- [State Sync ↓](#statesync)  
+- [Snapshot ↓](#snapshot)  
 
 <br>   
   
-<a name="part1"></a> 
+<a name="installation"></a> 
  
 ## Installation
 
@@ -143,7 +143,7 @@ okp4d tx staking create-validator \
 
 <br>  
 
-<a name="part2"></a> 
+<a name="statesync"></a> 
  
 ## State Sync
 
@@ -201,7 +201,7 @@ sudo systemctl restart okp4d  &&  sudo journalctl -u okp4d  -f -o cat
 
 
 
-<a name="part3"></a> 
+<a name="snapshot"></a> 
  
 ## SnapShot 
 26.01.23 (1.7 GB) block height 633900
