@@ -1,11 +1,11 @@
 ## SnapShot 
-02.03.23 (1.7 GB) block height 00000
+02.03.23 (2.5 GB) block height 1206660
 
 
 Download the snapshot
 ```bash
 cd $HOME
-wget http://0.0.0.0:8000/nolus_snap_.tar.gz
+wget http://194.163.155.84:8000/nolus_snap_1206660.tar.gz
 ```
 
 Stop the node, make a backup of priv_validator_state and delete the database
@@ -17,7 +17,7 @@ rm -rf $HOME/.nolus/data/
 
 Unpack the snapshot
 ```bash
-tar -C $HOME/.nolus/ -zxvf nolus_snap_.tar.gz --strip-components 3
+tar -C $HOME/.nolus/ -zxvf nolus_snap_1206660.tar.gz --strip-components 3
 ```
 
 Move the backup back
@@ -32,6 +32,6 @@ sudo systemctl restart nolusd && journalctl -fu nolusd -o cat
 
 Remove downloaded snapshot to free up space
 ```bash
-cd $HOME && rm -rf nolus_snap_.tar.gz
+cd $HOME && rm -rf nolus_snap_1206660.tar.gz
 ```
 
