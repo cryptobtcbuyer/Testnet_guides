@@ -25,6 +25,11 @@ Move the backup back
 mv $HOME/priv_validator_state.json.backup $HOME/.nolus/data/priv_validator_state.json
 ```
 
+Download addrbook
+```
+wget -O $HOME/.nolus/config/addrbook.json "https://raw.githubusercontent.com/cryptobtcbuyer/Testnet_guides/main/Nolus/addrbook.json"
+```
+
 Restart the node and check the logs
 ```bash
 sudo systemctl restart nolusd && journalctl -fu nolusd -o cat
