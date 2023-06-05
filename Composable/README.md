@@ -1,4 +1,4 @@
-<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/OKP4/assets/installation_home.png'>
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/Composable/assets/composable_cover.png'>
 
 
 <div align="center">
@@ -6,7 +6,13 @@
 </div>
 <br> 
 
-The official installation guide can be found at the [link](https://docs.okp4.network/nodes/introduction)
+Website — [composable.finance](https://composable.finance)  
+Twitter — [@ComposableFin](https://twitter.com/ComposableFin)  
+Github — [Composable-networks](https://github.com/notional-labs/composable-networks)  
+Medium — [Composable Finance](https://composablefi.medium.com)   
+Discord — [Composable Finance](https://discord.com/invite/composable)
+ 
+ 
 
 <br> 
         
@@ -27,10 +33,10 @@ sudo apt install curl build-essential git wget jq make gcc tmux htop nvme-cli pk
 ```
 
 
-Installing GO v1.19.2 (one command)
+Installing GO v1.20 (one command)
 ```bash
 cd $HOME && \
-ver="1.19.2" && \
+ver="1.20" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
 sudo rm -rf /usr/local/go && \
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
@@ -43,7 +49,7 @@ go version
 
 Set variables
 ```bash
-CHAIN="okp4-nemeton-1" && \
+CHAIN="banksy-testnet-2" && \
 MONIKER="<YOUR__MONIKER>" && \
 WALLET="<YOUR_WALLET_NAME>"
 
@@ -55,50 +61,52 @@ source $HOME/.bash_profile
 
 Build binary 
 ```bash
-git clone https://github.com/okp4/okp4d
-cd okp4d
+git clone https://github.com/notional-labs/composable-testnet
+cd composable-testnet 
+git checkout v2.3.1
 make install
-okp4d version
 ```
 
 Init your node
 ```bash
-okp4d init $MONIKER --chain-id $CHAIN && \
-okp4d config chain-id $CHAIN && \
-okp4d config keyring-backend test && \
+banksyd init $MONIKER --chain-id $CHAIN && \
+banksyd config chain-id $CHAIN
 ```
 
 Add wallet
 ```bash
-okp4d keys add $WALLET 
+banksyd keys add $WALLET 
 ```
-
 
 Download Genesis
 ```bash
-wget -O ~/.okp4d/config/genesis.json https://raw.githubusercontent.com/okp4/networks/main/chains/nemeton-1/genesis.json
+wget -O $HOME/.banksy/config/genesis.json "https://raw.githubusercontent.com/notional-labs/composable-networks/main/testnet-2/genesis.json"
 ```
 Download addrbook
 ```bash
-wget -O $HOME/.okp4d/config/addrbook.json "https://raw.githubusercontent.com/cryptobtcbuyer/Testnet_guides/main/OKP4/addrbook.json"
+wget -O $HOME/.banksy/config/addrbook.json "https://raw.githubusercontent.com/cryptobtcbuyer/Testnet_guides/main/Composable/addrbook.json"
 ```
 
 Configure Peers
 ```bash
-PEERS=a009a02a23428538b57591f73ba5a6462c476a70@136.243.88.91:6040,126dc25a6a5aa0cfa83010550dfb3c5a1a861755@65.108.201.15:21337,5c2a752c9b1952dbed075c56c600c3a79b58c395@95.214.55.232:26996,,dcc5b70f1df82def300db6f9dd859c1828514286@65.108.152.201:26656,d5519e378247dfb61dfe90652d1fe3e2b3005a5b@65.109.68.190:36656,8af258bbe73f4c66127a7b3e8b1ec23fde2950a6@65.108.192.123:19656,d1c1b729eff9afe7dfd371f190df6282c82ccfad@37.187.144.187:31656,a49302f8999e5a953ebae431c4dde93479e17155@141.95.153.244:26656,a98484ac9cb8235bd6a65cdf7648107e3d14dab4@116.202.231.58:36656,
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.okp4d/config/config.toml
+SEEDS="3f472746f46493309650e5a033076689996c8881@composable-testnet.rpc.kjnodes.com:15959"
+sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/" $HOME/.banksy/config/config.toml
+
+
+PEERS=7a4247261bad16289428543538d8e7b0c785b42c@135.181.22.94:26656,1d1b341ee37434cbcf23231d89fa410aeb970341@65.108.206.74:36656,73190b1ec85654eeb7ccdc42538a2bb4a98b2802@194.163.165.176:46656,837d9bf9a4ce4d8fd0e7b0cbe51870a2fa29526a@65.109.85.170:58656,085e6b4cf1f1d6f7e2c0b9d06d476d070cbd7929@banksy.sergo.dev:11813,d9b5a5910c1cf6b52f79aae4cf97dd83086dfc25@65.108.229.93:27656
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.banksy/config/config.toml
 ```
 
 Create a service file
 ```bash
-sudo tee /etc/systemd/system/okp4.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/banksyd.service > /dev/null <<EOF
 [Unit]
-Description=okp4
+Description=banksyd
 After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which okp4d) start
+ExecStart=$(which banksyd) start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
@@ -111,28 +119,28 @@ EOF
 Launch node and check logs
 ```bash
 sudo systemctl daemon-reload && \
-sudo systemctl enable okp4d && \
-sudo systemctl restart okp4d && \
-sudo journalctl -u okp4d -f -o cat
+sudo systemctl enable banksyd && \
+sudo systemctl restart banksyd && \
+sudo journalctl -u banksyd -f -o cat
 ```
 
 Wait until the node is fully synchronized.
 ```bash
-okp4d status | jq
+banksyd status | jq
 # The node is synchronized if the value in the "catching_up" line is false
 ```
 Create a validator
 ```bash
-okp4d tx staking create-validator \
---amount=1000000uknow \
---pubkey=$(okp4d tendermint show-validator) \
+banksyd tx staking create-validator \
+--amount=1000000upica \
+--pubkey=$(banksyd tendermint show-validator) \
 --moniker=$MONIKER \
 --chain-id=$CHAIN \
 --commission-rate="0.05" \
 --commission-max-rate="0.20" \
 --commission-max-change-rate="0.1" \
 --min-self-delegation="1" \
---fees=100uknow \
+--fees=5000upica \
 --from=$WALLET \
 --identity="" \
 --website="" \
@@ -154,11 +162,11 @@ okp4d tx staking create-validator \
 
 Stop the node and clear the database
 ```bash
-sudo systemctl stop okp4d  && okp4d tendermint unsafe-reset-all --home $HOME/.okp4d
+sudo systemctl stop banksyd && banksyd tendermint unsafe-reset-all --home $HOME/.banksy
 ```
 Setting variables
 ```bash
-SNAP_RPC="http://142.132.202.50:11111"  
+SNAP_RPC="http://194.163.165.176:46657"  
 # always check that the statesink is available. The address in quotes should open in the browser.
   
 # Enter with one command:
@@ -174,12 +182,12 @@ echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 ```
 Adding a peer
 ```bash
-peers="5c5bf00059349042504c1e7d0449c4ac6ee37fc2@142.132.202.50:11114" \
-&& sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.okp4d/config/config.toml
+peers="73190b1ec85654eeb7ccdc42538a2bb4a98b2802@194.163.165.176:46656" \
+&& sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.banksy/config/config.toml
 ```
 Adding a addrbook
 ```bash
-wget -O $HOME/.okp4d/config/addrbook.json "https://raw.githubusercontent.com/cryptobtcbuyer/Testnet_guides/main/OKP4/addrbook.json"
+wget -O $HOME/.banksy/config/addrbook.json "https://raw.githubusercontent.com/cryptobtcbuyer/Testnet_guides/main/Composable/addrbook.json"
 ```
 Adding the variables to config.toml
 ```bash
@@ -187,56 +195,14 @@ sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
 s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
 s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
 s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
-s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.okp4d/config/config.toml
+s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.banksy/config/config.toml
 ```
 
 Restart the node and check the logs
 ```bash
-sudo systemctl restart okp4d  &&  sudo journalctl -u okp4d  -f -o cat
+sudo systemctl restart banksyd  &&  sudo journalctl -u banksyd  -f -o cat
 ```
 
 <br> 
 
 
-
-
-<a name="snapshot"></a> 
- 
-## SnapShot 
-26.01.23 (1.7 GB) block height 633900
-
-
-Download the snapshot
-```bash
-cd $HOME
-wget http://142.132.202.50:8000/okp4_snap_633900.tar.gz
-```
-
-Stop the node, make a backup of priv_validator_state and delete the database
-```bash
-sudo systemctl stop okp4d  && \
-cp $HOME/.okp4d/data/priv_validator_state.json $HOME/priv_validator_state.json.backup  && \
-rm -rf $HOME/.okp4d/data/
-```
-
-Unpack the snapshot
-```bash
-tar -C $HOME/.okp4d/ -zxvf okp4_snap_633900.tar.gz --strip-components 3
-```
-
-Move the backup back
-```
-mv $HOME/priv_validator_state.json.backup $HOME/.okp4d/data/priv_validator_state.json
-```
-
-Restart the node and check the logs
-```bash
-sudo systemctl restart okp4d && journalctl -fu okp4d -o cat
-```
-
-Remove downloaded snapshot to free up space
-```bash
-cd $HOME && rm -rf okp4_snap_633900.tar.gz
-```
-
-<br> 
