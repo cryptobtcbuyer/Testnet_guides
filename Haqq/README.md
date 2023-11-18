@@ -40,15 +40,15 @@ Github — [haqq-network](https://github.com/haqq-network)
 ```bash
 cd $HOME/haqq && \
 git fetch && \
-git checkout v1.3.0 && \
+git checkout v1.6.1 && \
 make install
 ```
   
 Убедитесь, что версия и commit правильные:
 ```bash
 haqqd version --long | head
-# version: '"v1.3.0"'
-# commit: 39b4dcb706e72c187fc23ec6dddcfed20c79bc9d
+# version: '"1.6.1"'
+# commit: 363b0e9e82444dad8e36c6c1361414f3d98746c7
 ```
   
 Удалите старый genesis и загрузите genesis.json на свой сервер в папку .haqqd
@@ -128,10 +128,10 @@ sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-Установите Go 1.18.3
+Установите Go 1.20.1
 ```bash
 cd $HOME && \
-ver="1.18.3" && \
+ver="1.20.1" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
 sudo rm -rf /usr/local/go && \
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
@@ -146,15 +146,15 @@ go version
 ```bash
 cd $HOME && git clone https://github.com/haqq-network/haqq && \
 cd haqq && \
-git checkout v1.3.0 && \
+git checkout v1.6.1 && \
 make install 
 ```
   
 Убедитесь, что версия и commit правильные:
 ```bash
 haqqd version --long | head
-# version: '"v1.3.0"'
-# commit: 39b4dcb706e72c187fc23ec6dddcfed20c79bc9d
+# version: '"v1.6.1"'
+# commit: 363b0e9e82444dad8e36c6c1361414f3d98746c7
 ```
 
 Инициализируйте ноду
