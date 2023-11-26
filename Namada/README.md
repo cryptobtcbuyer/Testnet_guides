@@ -161,7 +161,7 @@ Now create pull request
 <img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/Namada/assets/pr.png'>
 
 
-
+<br> 
 ✅ **Everything is ready!** Stay tuned for further announcements
 <img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/Namada/assets/open.png'>
 
@@ -170,5 +170,4 @@ Now create pull request
 > **If your PR is not merged, you can run the post-genesis validator**
 > 
 > Remember, you must not need to be a genesis-validator in order to test the network effectively.
-> 
-> This is mainly if you plan to validate on Namada and want to test your own infra as well as ours.
+
