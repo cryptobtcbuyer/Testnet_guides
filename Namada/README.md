@@ -78,7 +78,7 @@ protoc --version
 Install Namada
 ```bash
 NAMADA_TAG="v0.23.2"
-git clone https://github.com/anoma/namada && cd namada && git fetch && git checkout $NAMADA_TAG && \
+git clone https://github.com/anoma/namada && cd namada && git fetch && git checkout $NAMADA_TAG 
 make build-release
 cargo fix --lib -p namada_apps
 ```
@@ -162,7 +162,7 @@ Now create pull request
 
 
 
-✅ Everything is ready! Stay tuned for further announcements
+✅ **Everything is ready!** Stay tuned for further announcements
 <img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/Namada/assets/open.png'>
 
 
