@@ -162,6 +162,7 @@ Now create pull request
 
 
 <br> 
+
 ✅ **Everything is ready!** Stay tuned for further announcements
 <img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/Namada/assets/open.png'>
 
