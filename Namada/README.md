@@ -16,6 +16,9 @@ Discord — [namada](https://discord.com/invite/namada)
 
 <br> 
 
+> [!WARNING]  
+> The information is outdated, please wait for an update
+
 ## Table of contents
 - [Hardware Requirements ↓](#hardware)  
 - [Installation ↓](#installation)  
