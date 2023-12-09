@@ -157,7 +157,7 @@ cat $HOME/.local/share/namada/pre-genesis/signed-transactions.toml
 ```
 
 **⚠️ Backup this folder**
-```bash$HOME/.local/share/namada/pre-genesis/```
+```bash $HOME/.local/share/namada/pre-genesis/```
 
 
 <br>  
