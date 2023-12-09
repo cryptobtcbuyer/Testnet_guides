@@ -172,9 +172,9 @@ If you have been a previous validator, name your PR "Update $ALIAS.toml" (substi
 Otherwise name it "Create $ALIAS.toml". <br>
 Paste the contents of the signed-transactions.toml file, and add your contact details according to the sample
 ```
-- discord = ""
-- twitter = ""
-- elements = ""
+- discord = "YOUR_DISCORD_ID"
+- twitter = "@YOUR_TWITTER"
+- elements = "@YOUR_NAME:matrix.org"
 ```
 
 and hit "Commit changes" and after "Propose changes"
