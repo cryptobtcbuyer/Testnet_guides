@@ -92,7 +92,7 @@ make build
 
 Move binary
 ```bash
-cd $HOME && cd $HOME && cp $HOME/cometbft/build/cometbft /usr/local/bin/cometbft && \
+cd $HOME && cp $HOME/cometbft/build/cometbft /usr/local/bin/cometbft && \
 cp "$HOME/namada/target/release/namada" /usr/local/bin/namada && \
 cp "$HOME/namada/target/release/namadac" /usr/local/bin/namadac && \
 cp "$HOME/namada/target/release/namadan" /usr/local/bin/namadan && \
