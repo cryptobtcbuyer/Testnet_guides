@@ -156,6 +156,10 @@ You can print the signed-transactions.toml by running
 cat $HOME/.local/share/namada/pre-genesis/signed-transactions.toml
 ```
 
+**⚠️ Backup this folder**
+```bash$HOME/.local/share/namada/pre-genesis/```
+
+
 <br>  
 
 <a name="github"></a> 
