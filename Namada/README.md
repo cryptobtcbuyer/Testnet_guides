@@ -176,16 +176,16 @@ Paste the contents of the signed-transactions.toml file, and add your contact de
 ```
 
 and hit "Commit changes" and after "Propose changes"
-<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/Namada/assets/commit.png'>
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/Namada/assets/commit2.png'>
 
 
 Now create pull request
-<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/Namada/assets/pr.png'>
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/Namada/assets/pr2.png'>
 
 <br> 
 
 ✅ **Everything is ready!** Stay tuned for further announcements
-<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/Namada/assets/open.png'>
+<img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/Namada/assets/open2.png'>
 
 
 
