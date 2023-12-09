@@ -170,7 +170,7 @@ Add a new file
 
 If you have been a previous validator, name your PR "Update $ALIAS.toml" (substitute $ALIAS for your validator name). <br>
 Otherwise name it "Create $ALIAS.toml". <br>
-Paste the contents of the signed-transactions.toml file, and add your contact details according to the sample
+Paste the contents of the `signed-transactions.toml` file, and add your contact details according to the sample
 ```
 - discord = "YOUR_DISCORD_ID"
 - twitter = "@YOUR_TWITTER"
