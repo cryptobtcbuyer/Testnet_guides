@@ -129,12 +129,13 @@ namadac utils init-genesis-established-account --path $TX_FILE_PATH --aliases $A
 
 # The command will ouptut the generated address of the established account. It is useful to save this address for later use. <br>
 # Derived established account address: tnam123....
+# We will use this address in the next command
 ```
 
 Generate a pre-genesis validator account.<br>
 Enter the necessary data into the variables and run the command
 ```bash
-ESTABLISHED_ACCOUNT_ADDRESS="THE_ADDRESS_FROM_THE_PREVIOUS_STEP"
+ESTABLISHED_ACCOUNT_ADDRESS="ESTABLISHED_ACCOUNT_ADDRESS_FROM_THE_PREVIOUS_STEP"
 EMAIL="YOUR_EMAIL"
 IP="IP_ADDRESS_OF_YOUR_SERVER:26656"
 
