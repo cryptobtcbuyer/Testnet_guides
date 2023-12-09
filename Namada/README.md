@@ -44,7 +44,7 @@ Minimum Hardware Requirements
 Update packages and Install dependencies (one command)
 ```bash
 sudo apt update && sudo apt upgrade -y && \
-sudo apt install curl build-essential git wget jq make gcc tmux htop nvme-cli pkg-config libssl-dev tar clang bsdmainutils ncdu protobuf-compiler unzip  libleveldb-dev -y
+sudo apt install curl build-essential git wget jq make gcc tmux htop nvme-cli pkg-config libssl-dev tar clang bsdmainutils ncdu protobuf-compiler unzip libudev-dev libleveldb-dev -y
 ```
 
 Install GO v1.20.5 (one command)
@@ -80,7 +80,7 @@ protoc --version
 
 Install Namada
 ```bash
-NAMADA_TAG="v0.23.2"
+NAMADA_TAG="v0.28.0"
 git clone https://github.com/anoma/namada && cd namada && git fetch && git checkout $NAMADA_TAG 
 make build-release
 cargo fix --lib -p namada_apps
@@ -106,7 +106,7 @@ cp "$HOME/namada/target/release/namadar" /usr/local/bin/namadar
 Check binary version
 ```bash
 namada --version
-#v0.23.2
+#v0.28.0
 cometbft version
 #v0.37.2
 ```
@@ -116,23 +116,47 @@ cometbft version
 <a name="keys"></a> 
 
 ## Create your validator keys
-> **After the release of binary v0.25.0, these commands will be changed**
 
-Specify the name of your validator and the IP address of the server
+
+Generating new keys.
+Be sure to save the password and the mnemonic phrase
 ```bash
-export VALIDATOR_ALIAS="CHOOSE_A_NAME_FOR_YOUR_VALIDATOR"
-export PUBLIC_IP="LAPTOP_OR_SERVER_IP"
-
-namada client utils init-genesis-validator \
-    --alias $VALIDATOR_ALIAS \
-    --max-commission-rate-change 0.01 \
-    --commission-rate 0.05 \
-    --net-address $PUBLIC_IP:26656
+ALIAS="NAME_OF_YOUR_VALIDATOR"
+namadaw --pre-genesis key gen --alias $ALIAS
 ```
 
-You can print the validator.toml by running
+Generate an established account.
 ```bash
-cat $HOME/.local/share/namada/pre-genesis/$VALIDATOR_ALIAS/validator.toml
+TX_FILE_PATH="$HOME/.local/share/namada/pre-genesis/transactions.toml"
+namadac utils init-genesis-established-account --path $TX_FILE_PATH --aliases $ALIAS
+
+# The command will ouptut the generated address of the established account. It is useful to save this address for later use. <br>
+# Derived established account address: tnam123....
+```
+
+Generate a pre-genesis validator account.<br>
+Enter the necessary data into the variables and run the command
+```bash
+ESTABLISHED_ACCOUNT_ADDRESS="THE_ADDRESS_FROM_THE_PREVIOUS_STEP"
+EMAIL="YOUR_EMAIL"
+IP="IP_ADDRESS_OF_YOUR_SERVER:26656"
+
+namadac utils init-genesis-validator --address $ESTABLISHED_ACCOUNT_ADDRESS --alias $ALIAS --net-address $IP --commission-rate 0.05 --max-commission-rate-change 0.01 --self-bond-amount 1000000 --email $EMAIL --path $TX_FILE_PATH
+
+# Successful execution will output the new validator address:
+# Validator account address: tnam321...
+```
+
+Signing transactions
+```bash
+namadac utils sign-genesis-txs --path $TX_FILE_PATH --output $HOME/.local/share/namada/pre-genesis/signed-transactions.toml --alias $ALIAS
+
+# Your public signed transactions TOML has been written to /root/.local/share/namada/pre-genesis/signed-transactions.toml
+```
+
+You can print the signed-transactions.toml by running
+```bash
+cat $HOME/.local/share/namada/pre-genesis/signed-transactions.toml
 ```
 
 <br>  
@@ -147,12 +171,13 @@ Go to the directory
 Add a new file
 <img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/Namada/assets/new_file.png'>
 
-Name the file *your_validator_name.toml*, paste the contents of the validator.toml file, and add your contact details according to the sample
+If you have been a previous validator, name your PR "Update $ALIAS.toml" (substitute $ALIAS for your validator name). <br>
+Otherwise name it "Create $ALIAS.toml". <br>
+Paste the contents of the signed-transactions.toml file, and add your contact details according to the sample
 ```
 - email
 - discord
 - elements/matrix handle (optional)
-- telegram (optional)
 - twitter (optional)
 ```
 
@@ -162,7 +187,6 @@ and hit "Commit changes" and after "Propose changes"
 
 Now create pull request
 <img src='https://github.com/cryptobtcbuyer/Testnet_guides/blob/main/Namada/assets/pr.png'>
-
 
 <br> 
 
