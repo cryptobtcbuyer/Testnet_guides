@@ -90,7 +90,7 @@ cd $HOME && git clone https://github.com/cometbft/cometbft.git && cd cometbft &&
 make build
 ```
 
-Move binary
+Move binary  (one command)
 ```bash
 cd $HOME && cp $HOME/cometbft/build/cometbft /usr/local/bin/cometbft && \
 cp "$HOME/namada/target/release/namada" /usr/local/bin/namada && \
