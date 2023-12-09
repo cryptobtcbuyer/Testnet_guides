@@ -16,9 +16,6 @@ Discord — [namada](https://discord.com/invite/namada)
 
 <br> 
 
-> [!WARNING]  
-> The information is outdated, please wait for an update
-
 ## Table of contents
 - [Hardware Requirements ↓](#hardware)  
 - [Installation ↓](#installation)  
@@ -83,20 +80,19 @@ Install Namada
 NAMADA_TAG="v0.28.0"
 git clone https://github.com/anoma/namada && cd namada && git fetch && git checkout $NAMADA_TAG 
 make build-release
-cargo fix --lib -p namada_apps
 ```
 
+<!---
 Install CometBFT
 ```bash
 COMETBFT_TAG="v0.37.2"
 cd $HOME && git clone https://github.com/cometbft/cometbft.git && cd cometbft && git checkout $COMETBFT_TAG
 make build
-```
+```--->
 
 Move binary
 ```bash
-cd $HOME && cp $HOME/cometbft/build/cometbft /usr/local/bin/cometbft && \
-cp "$HOME/namada/target/release/namada" /usr/local/bin/namada && \
+cd $HOME && cp "$HOME/namada/target/release/namada" /usr/local/bin/namada && \
 cp "$HOME/namada/target/release/namadac" /usr/local/bin/namadac && \
 cp "$HOME/namada/target/release/namadan" /usr/local/bin/namadan && \
 cp "$HOME/namada/target/release/namadaw" /usr/local/bin/namadaw && \
@@ -107,8 +103,6 @@ Check binary version
 ```bash
 namada --version
 #v0.28.0
-cometbft version
-#v0.37.2
 ```
 
 <br>  
