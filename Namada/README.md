@@ -200,3 +200,6 @@ Now create pull request
 > 
 > Remember, you must not need to be a genesis-validator in order to test the network effectively.
 
+
+> [!Warning]
+> **This guide is not enough for the successful launch of the validator node, it is intended only to submit a Pull Request.**
